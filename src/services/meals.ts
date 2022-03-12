@@ -22,6 +22,7 @@ function getMeals({ query = "", limit = 3, page = 0 }: GetMealsParams = {}) {
       page,
       limit,
       hasMore: page * limit + limit < meals.length,
+      size: Math.ceil(meals.length / limit),
     }));
 }
 

@@ -5,8 +5,8 @@ import {
   Input,
   Button,
   InputGroup,
-  InputLeftElement,
   InputRightElement,
+  Text,
 } from "@chakra-ui/react";
 import { getMeals } from "../services/meals";
 import { useQuery } from "react-query";
@@ -15,14 +15,14 @@ import { useStateDebounced } from "../utils/hooks";
 
 export default function MealsPage() {
   const [query, queryDebounced, setQuery] = useStateDebounced("", 500);
-  const { page, nextPage, prevPage } = usePagination([query]);
+  const { page, nextPage, prevPage } = usePagination([queryDebounced]);
 
   const [fetchingReason, setFetcingReason] = React.useState<
     "prev" | "next" | "query"
   >("query");
 
   const {
-    data: { meals, hasMore } = { meals: [], hasMore: false },
+    data: { meals, hasMore, size } = { meals: [], hasMore: false, size: 0 },
     isFetching,
   } = useQuery(
     ["meals", queryDebounced, page],
@@ -65,6 +65,11 @@ export default function MealsPage() {
         >
           Prev
         </Button>
+        {size > 0 && (
+          <Text>
+            {page + 1}/{size}
+          </Text>
+        )}
         <Button
           isLoading={isFetching && fetchingReason === "next"}
           disabled={!hasMore || isFetching}
