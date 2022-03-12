@@ -21,7 +21,7 @@ export interface IngidientsApi {
   strIngredient20: string;
 }
 
-export interface MealApi extends IngidientsApi {
+export interface MealApi extends IngidientsApi, Record<string, unknown> {
   idMeal: string;
   strMeal: string;
   strMealThumb: string;

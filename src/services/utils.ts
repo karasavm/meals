@@ -15,13 +15,13 @@ function parseMeal({
   idMeal,
   strMealThumb,
   strMeal,
-  ...ingrindients
+  ...restKeys
 }: MealApi): Meal {
   return {
     id: idMeal,
     thumb: strMealThumb,
     title: strMeal,
-    ingredients: parseIngredients(ingrindients),
+    ingredients: parseIngredients(restKeys),
   };
 }
 
