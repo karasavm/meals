@@ -1,12 +1,26 @@
 import { Meal } from "../types";
+import { Box, Image, Text } from "@chakra-ui/react";
 
 type MealItemProps = Meal;
 export default function MealItem({ title, thumb, ingridients }: MealItemProps) {
   return (
-    <div>
-      <h3>{title}</h3>
-      <div>{ingridients.join(", ")}</div>
-      <img src={thumb} style={{ width: 200, height: 200 }} alt="" />
-    </div>
+    <Box display="flex" p="2">
+      <Box boxSize="150px">
+        <Image src={thumb} alt="" />
+      </Box>
+      <Box
+        display="flex"
+        flexDirection="column"
+        justifyContent="space-evenly"
+        alignItems="flex-start"
+      >
+        <Text p="4" fontSize="3xl">
+          {title}
+        </Text>
+        <Text p="4" fontSize="lg">
+          {ingridients.join(", ")}
+        </Text>
+      </Box>
+    </Box>
   );
 }

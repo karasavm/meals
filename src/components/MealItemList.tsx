@@ -1,5 +1,6 @@
 import { Meal } from "../types";
 import MealItem from "./MealItem";
+import { Box } from "@chakra-ui/react";
 
 type MealItemListProps = {
   meals: Meal[];
@@ -7,10 +8,10 @@ type MealItemListProps = {
 
 export default function MealItemList({ meals }: MealItemListProps) {
   return (
-    <div>
+    <Box pt="8">
       {meals.map((meal) => (
         <MealItem {...meal} />
       ))}
-    </div>
+    </Box>
   );
 }
