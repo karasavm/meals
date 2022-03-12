@@ -8,11 +8,12 @@ export default function MealsPage() {
   const [query, setQuery] = React.useState("");
   const [page, setPage] = React.useState(0);
 
-  const { data: { meals, hasMore } = { meals: [], hasMore: false } } = useQuery(
-    ["meals", query, page],
-    () => getMeals({ query, page }),
-    { keepPreviousData: true }
-  );
+  const {
+    data: { meals, hasMore } = { meals: [], hasMore: false },
+    isFetching,
+  } = useQuery(["meals", query, page], () => getMeals({ query, page }), {
+    keepPreviousData: true,
+  });
 
   return (
     <Box w="70%" display="flex" flexDirection="column" flex={1}>
@@ -27,13 +28,13 @@ export default function MealsPage() {
       <Box display="flex" justifyContent="space-between" p="2">
         <Button
           colorScheme="cyan"
-          disabled={page === 0}
+          disabled={page === 0 || isFetching}
           onClick={() => setPage((p) => Math.max(0, p - 1))}
         >
           Prev
         </Button>
         <Button
-          disabled={!hasMore}
+          disabled={!hasMore || isFetching}
           onClick={() => setPage((p) => p + 1)}
           colorScheme="cyan"
         >
