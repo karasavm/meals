@@ -5,7 +5,7 @@ type MealItemProps = Meal;
 export default function MealItem({ title, thumb, ingredients }: MealItemProps) {
   return (
     <Box display="flex" p="2">
-      <Box boxSize="150px">
+      <Box flexBasis="25%">
         <Image src={thumb} alt="" />
       </Box>
       <Box
@@ -13,11 +13,13 @@ export default function MealItem({ title, thumb, ingredients }: MealItemProps) {
         flexDirection="column"
         justifyContent="space-evenly"
         alignItems="flex-start"
+        flexBasis="75%"
+        width={0}
       >
-        <Text p="4" fontSize="3xl">
+        <Text pl="4" fontSize="">
           {title}
         </Text>
-        <Text p="4" fontSize="lg">
+        <Text pl="4" fontSize="lg" isTruncated width="100%">
           {ingredients.join(", ")}
         </Text>
       </Box>
