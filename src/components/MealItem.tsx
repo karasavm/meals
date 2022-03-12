@@ -2,7 +2,7 @@ import { Meal } from "../types";
 import { Box, Image, Text } from "@chakra-ui/react";
 
 type MealItemProps = Meal;
-export default function MealItem({ title, thumb, ingridients }: MealItemProps) {
+export default function MealItem({ title, thumb, ingredients }: MealItemProps) {
   return (
     <Box display="flex" p="2">
       <Box boxSize="150px">
@@ -18,7 +18,7 @@ export default function MealItem({ title, thumb, ingridients }: MealItemProps) {
           {title}
         </Text>
         <Text p="4" fontSize="lg">
-          {ingridients.join(", ")}
+          {ingredients.join(", ")}
         </Text>
       </Box>
     </Box>

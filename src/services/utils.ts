@@ -1,14 +1,14 @@
 import { Meal } from "../types";
 import { IngidientsApi, MealApi } from "./types";
 
-function isIngridient(key: string): key is keyof IngidientsApi {
+function isIngredient(key: string): key is keyof IngidientsApi {
   return key.includes("strIngredient");
 }
 
-function parseIngridients(ingridients: IngidientsApi): Meal["ingridients"] {
-  return Object.keys(ingridients)
-    .filter(isIngridient)
-    .map((key) => ingridients[key]);
+function parseIngredients(ingredients: IngidientsApi): Meal["ingredients"] {
+  return Object.keys(ingredients)
+    .filter(isIngredient)
+    .map((key) => ingredients[key]);
 }
 
 function parseMeal({
@@ -21,7 +21,7 @@ function parseMeal({
     id: idMeal,
     thumb: strMealThumb,
     title: strMeal,
-    ingridients: parseIngridients(ingrindients),
+    ingredients: parseIngredients(ingrindients),
   };
 }
 

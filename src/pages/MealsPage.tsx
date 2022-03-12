@@ -10,7 +10,7 @@ export default function MealsPage() {
       title: "Meal 1",
       thumb:
         "https://www.themealdb.com/images/media/meals/yvpuuy1511797244.jpg",
-      ingridients: [
+      ingredients: [
         "potato",
         "2 eggs",
         "tomato",
@@ -25,14 +25,14 @@ export default function MealsPage() {
       title: "Meal 1",
       thumb:
         "https://www.themealdb.com/images/media/meals/yvpuuy1511797244.jpg",
-      ingridients: ["potato", "2 eggs", "tomato"],
+      ingredients: ["potato", "2 eggs", "tomato"],
     },
     {
       id: "3",
       title: "Meal 1",
       thumb:
         "https://www.themealdb.com/images/media/meals/yvpuuy1511797244.jpg",
-      ingridients: ["potato", "2 eggs", "tomato"],
+      ingredients: ["potato", "2 eggs", "tomato"],
     },
   ]);
 
