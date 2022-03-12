@@ -20,7 +20,13 @@ export default function MealItem({ title, thumb, ingredients }: MealItemProps) {
           {title}
         </Text>
         <Divider />
-        <Text pl="4" fontSize="lg" isTruncated width="100%">
+        <Text
+          noOfLines={2}
+          pl="4"
+          textAlign={"left"}
+          fontSize="lg"
+          width="100%"
+        >
           {ingredients.join(", ")}
         </Text>
       </Box>
