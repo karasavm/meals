@@ -1,5 +1,5 @@
 export interface Meal {
-  id: number;
+  id: string;
   title: string;
   thumb: string;
   ingridients: string[];

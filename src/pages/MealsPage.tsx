@@ -6,7 +6,7 @@ import { Box, Input } from "@chakra-ui/react";
 export default function MealsPage() {
   const [meals] = React.useState<Meal[]>([
     {
-      id: 1,
+      id: "1",
       title: "Meal 1",
       thumb:
         "https://www.themealdb.com/images/media/meals/yvpuuy1511797244.jpg",
@@ -21,14 +21,14 @@ export default function MealsPage() {
       ],
     },
     {
-      id: 2,
+      id: "2",
       title: "Meal 1",
       thumb:
         "https://www.themealdb.com/images/media/meals/yvpuuy1511797244.jpg",
       ingridients: ["potato", "2 eggs", "tomato"],
     },
     {
-      id: 3,
+      id: "3",
       title: "Meal 1",
       thumb:
         "https://www.themealdb.com/images/media/meals/yvpuuy1511797244.jpg",
