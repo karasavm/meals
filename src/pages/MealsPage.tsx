@@ -12,6 +12,7 @@ import { getMeals } from "../services/meals";
 import { useQuery } from "react-query";
 import { usePagination } from "./hooks";
 import { useStateDebounced } from "../utils/hooks";
+import Error from "../components/Error";
 
 export default function MealsPage() {
   const [query, queryDebounced, setQuery] = useStateDebounced("", 500);
@@ -24,6 +25,8 @@ export default function MealsPage() {
   const {
     data: { meals, hasMore, size } = { meals: [], hasMore: false, size: 0 },
     isFetching,
+    isError,
+    error,
   } = useQuery(
     ["meals", queryDebounced, page],
     () => getMeals({ query: queryDebounced, page }),
@@ -65,7 +68,7 @@ export default function MealsPage() {
         >
           Prev
         </Button>
-        {size > 0 && (
+        {size > 0 && !isError && (
           <Text>
             {page + 1}/{size}
           </Text>
@@ -82,7 +85,12 @@ export default function MealsPage() {
           Next
         </Button>
       </Box>
-      <MealItemList meals={meals} />
+
+      {isError ? (
+        <Error message={(error as { message: string }).message} />
+      ) : (
+        <MealItemList meals={meals} />
+      )}
     </Box>
   );
 }
