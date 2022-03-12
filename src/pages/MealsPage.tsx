@@ -3,10 +3,11 @@ import MealItemList from "../components/MealItemList";
 import { Box, Input, Button } from "@chakra-ui/react";
 import { getMeals } from "../services/meals";
 import { useQuery } from "react-query";
+import { usePagination } from "./hooks";
 
 export default function MealsPage() {
   const [query, setQuery] = React.useState("");
-  const [page, setPage] = React.useState(0);
+  const { page, nextPage, prevPage } = usePagination();
 
   const {
     data: { meals, hasMore } = { meals: [], hasMore: false },
@@ -29,13 +30,13 @@ export default function MealsPage() {
         <Button
           colorScheme="cyan"
           disabled={page === 0 || isFetching}
-          onClick={() => setPage((p) => Math.max(0, p - 1))}
+          onClick={prevPage}
         >
           Prev
         </Button>
         <Button
           disabled={!hasMore || isFetching}
-          onClick={() => setPage((p) => p + 1)}
+          onClick={nextPage}
           colorScheme="cyan"
         >
           Next
