@@ -1,6 +1,13 @@
 import React from "react";
 import MealItemList from "../components/MealItemList";
-import { Box, Input, Button } from "@chakra-ui/react";
+import {
+  Box,
+  Input,
+  Button,
+  InputGroup,
+  InputLeftElement,
+  InputRightElement,
+} from "@chakra-ui/react";
 import { getMeals } from "../services/meals";
 import { useQuery } from "react-query";
 import { usePagination } from "./hooks";
@@ -28,12 +35,23 @@ export default function MealsPage() {
   return (
     <Box w="70%" display="flex" flexDirection="column" flex={1}>
       <Box p="2">
-        <Input
-          type="text"
-          placeholder="Search..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
+        <InputGroup>
+          <Input
+            type="text"
+            placeholder="Search..."
+            value={query}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setFetcingReason("query");
+            }}
+          />
+
+          {isFetching && fetchingReason === "query" && (
+            <InputRightElement
+              children={<Button color="green.500" isLoading variant="ghost" />}
+            />
+          )}
+        </InputGroup>
       </Box>
       <Box display="flex" justifyContent="space-between" p="2">
         <Button
