@@ -11,13 +11,13 @@ function parseMeal({
   idMeal,
   strMealThumb,
   strMeal,
-  ...ingindients
+  ...ingrindients
 }: MealApi): Meal {
   return {
     id: idMeal,
     thumb: strMealThumb,
     title: strMeal,
-    ingridients: parseIngridients(ingindients),
+    ingridients: parseIngridients(ingrindients),
   };
 }
 
