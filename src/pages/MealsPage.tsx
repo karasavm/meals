@@ -10,6 +10,10 @@ export default function MealsPage() {
   const [query, queryDebounced, setQuery] = useStateDebounced("", 500);
   const { page, nextPage, prevPage } = usePagination();
 
+  const [fetchingReason, setFetcingReason] = React.useState<
+    "prev" | "next" | "query"
+  >("query");
+
   const {
     data: { meals, hasMore } = { meals: [], hasMore: false },
     isFetching,
@@ -33,15 +37,23 @@ export default function MealsPage() {
       </Box>
       <Box display="flex" justifyContent="space-between" p="2">
         <Button
+          isLoading={isFetching && fetchingReason === "prev"}
           colorScheme="cyan"
           disabled={page === 0 || isFetching}
-          onClick={prevPage}
+          onClick={() => {
+            prevPage();
+            setFetcingReason("prev");
+          }}
         >
           Prev
         </Button>
         <Button
+          isLoading={isFetching && fetchingReason === "next"}
           disabled={!hasMore || isFetching}
-          onClick={nextPage}
+          onClick={() => {
+            nextPage();
+            setFetcingReason("next");
+          }}
           colorScheme="cyan"
         >
           Next
