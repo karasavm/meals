@@ -8,6 +8,7 @@ function isIngredient(key: string): key is keyof IngidientsApi {
 function parseIngredients(ingredients: IngidientsApi): Meal["ingredients"] {
   return Object.keys(ingredients)
     .filter(isIngredient)
+    .filter((key) => ingredients[key] !== "")
     .map((key) => ingredients[key]);
 }
 
