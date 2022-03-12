@@ -1,6 +1,12 @@
 import { Meal } from "../types";
 import { IngidientsApi, MealApi } from "./types";
 
+function parseIngridients(ingridients: IngidientsApi): Meal["ingridients"] {
+  return (Object.keys(ingridients) as (keyof IngidientsApi)[]).map(
+    (key) => ingridients[key] as string
+  );
+}
+
 function parseMeal({
   idMeal,
   strMealThumb,
@@ -11,9 +17,7 @@ function parseMeal({
     id: idMeal,
     thumb: strMealThumb,
     title: strMeal,
-    ingridients: (Object.keys(ingindients) as (keyof IngidientsApi)[]).map(
-      (key) => ingindients[key] as string
-    ),
+    ingridients: parseIngridients(ingindients),
   };
 }
 
