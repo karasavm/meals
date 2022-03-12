@@ -9,12 +9,26 @@ export default function MealsPage() {
   const [query, setQuery] = React.useState("");
   const { page, nextPage, prevPage } = usePagination();
 
+  const [queryDebounced, setQueryDebounced] = React.useState(query);
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setQueryDebounced(query);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [query]);
+
   const {
     data: { meals, hasMore } = { meals: [], hasMore: false },
     isFetching,
-  } = useQuery(["meals", query, page], () => getMeals({ query, page }), {
-    keepPreviousData: true,
-  });
+  } = useQuery(
+    ["meals", queryDebounced, page],
+    () => getMeals({ query: queryDebounced, page }),
+    {
+      keepPreviousData: true,
+    }
+  );
 
   return (
     <Box w="70%" display="flex" flexDirection="column" flex={1}>
