@@ -1,26 +1,10 @@
 import axios from "axios";
-import { MealApi, IngidientsApi } from "./types";
-import { Meal } from "../types";
+import { MealApi } from "./types";
+import { parseMeal } from "./utils";
 
 type GetMealsParams = {
   query?: string;
 };
-
-function parseMeal({
-  idMeal,
-  strMealThumb,
-  strMeal,
-  ...ingindients
-}: MealApi): Meal {
-  return {
-    id: idMeal,
-    thumb: strMealThumb,
-    title: strMeal,
-    ingridients: (Object.keys(ingindients) as (keyof IngidientsApi)[]).map(
-      (key) => ingindients[key] as string
-    ),
-  };
-}
 
 function getMeals({ query = "" }: GetMealsParams = {}) {
   return axios
