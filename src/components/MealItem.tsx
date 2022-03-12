@@ -6,7 +6,11 @@ export default function MealItem({ title, thumb, ingredients }: MealItemProps) {
   return (
     <Box display="flex" p="2">
       <Box flexBasis="25%">
-        <Image src={thumb} alt="" />
+        <Image
+          src={thumb}
+          alt=""
+          fallbackSrc="https://via.placeholder.com/150"
+        />
       </Box>
       <Box
         display="flex"
