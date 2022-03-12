@@ -1,5 +1,5 @@
 import { Meal } from "../types";
-import { Box, Image, Text } from "@chakra-ui/react";
+import { Box, Image, Text, Divider } from "@chakra-ui/react";
 
 type MealItemProps = Meal;
 export default function MealItem({ title, thumb, ingredients }: MealItemProps) {
@@ -19,6 +19,7 @@ export default function MealItem({ title, thumb, ingredients }: MealItemProps) {
         <Text pl="4" fontSize="">
           {title}
         </Text>
+        <Divider />
         <Text pl="4" fontSize="lg" isTruncated width="100%">
           {ingredients.join(", ")}
         </Text>
