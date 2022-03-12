@@ -8,8 +8,10 @@ export default function MealsPage() {
   const [query, setQuery] = React.useState("");
   const [page, setPage] = React.useState(0);
 
-  const { data = [] } = useQuery(["meals", query, page], () =>
-    getMeals({ query, page }).then(({ meals, hasMore }) => meals)
+  const { data: { meals, hasMore } = { meals: [], hasMore: false } } = useQuery(
+    ["meals", query, page],
+    () => getMeals({ query, page }),
+    { keepPreviousData: true }
   );
 
   return (
@@ -30,11 +32,15 @@ export default function MealsPage() {
         >
           Prev
         </Button>
-        <Button onClick={() => setPage((p) => p + 1)} colorScheme="cyan">
+        <Button
+          disabled={!hasMore}
+          onClick={() => setPage((p) => p + 1)}
+          colorScheme="cyan"
+        >
           Next
         </Button>
       </Box>
-      <MealItemList meals={data} />
+      <MealItemList meals={meals} />
     </Box>
   );
 }
