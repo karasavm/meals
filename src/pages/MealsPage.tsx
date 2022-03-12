@@ -15,7 +15,7 @@ import { useStateDebounced } from "../utils/hooks";
 
 export default function MealsPage() {
   const [query, queryDebounced, setQuery] = useStateDebounced("", 500);
-  const { page, nextPage, prevPage } = usePagination();
+  const { page, nextPage, prevPage } = usePagination([query]);
 
   const [fetchingReason, setFetcingReason] = React.useState<
     "prev" | "next" | "query"
