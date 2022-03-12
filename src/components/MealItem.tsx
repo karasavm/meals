@@ -1,8 +1,15 @@
 import { Meal } from "../types";
-import { Box, Image, Text, Divider } from "@chakra-ui/react";
+import {
+  Box,
+  Image,
+  Text,
+  Divider,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 
 type MealItemProps = Meal;
 export default function MealItem({ title, thumb, ingredients }: MealItemProps) {
+  const noOfLines = useBreakpointValue({ sm: 2, base: 1 });
   return (
     <Box display="flex" p="2">
       <Box flexBasis="25%">
@@ -25,10 +32,10 @@ export default function MealItem({ title, thumb, ingredients }: MealItemProps) {
         </Text>
         <Divider />
         <Text
-          noOfLines={2}
+          noOfLines={noOfLines}
           pl="4"
           textAlign={"left"}
-          fontSize="lg"
+          fontSize="md"
           width="100%"
         >
           {ingredients.join(", ")}
