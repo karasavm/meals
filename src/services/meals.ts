@@ -8,11 +8,11 @@ type GetMealsParams = {
 
 function getMeals({ query = "" }: GetMealsParams = {}) {
   return axios
-    .get<{ meals: MealApi }>(
+    .get<{ meals: MealApi[] }>(
       `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`
     )
     .then(({ data: { meals } }) => ({
-      meals: parseMeal(meals),
+      meals: meals.map(parseMeal),
     }));
 }
 
