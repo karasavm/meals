@@ -4,20 +4,11 @@ import { Box, Input, Button } from "@chakra-ui/react";
 import { getMeals } from "../services/meals";
 import { useQuery } from "react-query";
 import { usePagination } from "./hooks";
+import { useStateDebounced } from "../utils/hooks";
 
 export default function MealsPage() {
-  const [query, setQuery] = React.useState("");
+  const [query, queryDebounced, setQuery] = useStateDebounced("", 500);
   const { page, nextPage, prevPage } = usePagination();
-
-  const [queryDebounced, setQueryDebounced] = React.useState(query);
-
-  React.useEffect(() => {
-    const timer = setTimeout(() => {
-      setQueryDebounced(query);
-    }, 500);
-
-    return () => clearTimeout(timer);
-  }, [query]);
 
   const {
     data: { meals, hasMore } = { meals: [], hasMore: false },
