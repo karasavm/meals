@@ -1,25 +1,30 @@
-export interface IngidientsApi {
-  strIngredient1: string;
-  strIngredient2: string;
-  strIngredient3: string;
-  strIngredient4: string;
-  strIngredient5: string;
-  strIngredient6: string;
-  strIngredient7: string;
-  strIngredient8: string;
-  strIngredient9: string;
-  strIngredient10: string;
-  strIngredient11: string;
-  strIngredient12: string;
-  strIngredient13: string;
-  strIngredient14: string;
-  strIngredient15: string;
-  strIngredient16: string;
-  strIngredient17: string;
-  strIngredient18: string;
-  strIngredient19: string;
-  strIngredient20: string;
-}
+type Nums =
+  | 1
+  | 2
+  | 3
+  | 4
+  | 5
+  | 6
+  | 7
+  | 8
+  | 9
+  | 10
+  | 11
+  | 12
+  | 13
+  | 14
+  | 15
+  | 16
+  | 17
+  | 18
+  | 19
+  | 20;
+
+type IngredientKeys = `strIngredient${Nums}`;
+
+export type IngidientsApi = {
+  [K in IngredientKeys]: string;
+};
 
 export interface MealApi extends IngidientsApi, Record<string, unknown> {
   idMeal: string;
