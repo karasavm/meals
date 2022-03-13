@@ -16,7 +16,7 @@ export default function MealItem({ title, thumb, ingredients }: MealItemProps) {
         <Image
           src={thumb}
           alt=""
-          fallbackSrc="https://via.placeholder.com/150"
+          fallbackSrc="https://via.placeholder.com/550"
         />
       </Box>
       <Box
