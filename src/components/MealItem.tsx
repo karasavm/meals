@@ -12,8 +12,9 @@ export default function MealItem({ title, thumb, ingredients }: MealItemProps) {
   const noOfLines = useBreakpointValue({ sm: 2, base: 1 });
   return (
     <Box display="flex" p="2">
-      <Box flexBasis="25%">
+      <Box flexBasis="25%" maxW={150}>
         <Image
+          // maxW={150}
           src={thumb}
           alt={title}
           fallbackSrc="https://via.placeholder.com/550"
