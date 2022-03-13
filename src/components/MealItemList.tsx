@@ -10,7 +10,7 @@ export default function MealItemList({ meals }: MealItemListProps) {
   return (
     <Box pt="8">
       {meals.map((meal) => (
-        <MealItem {...meal} />
+        <MealItem {...meal} key={meal.id} />
       ))}
     </Box>
   );
