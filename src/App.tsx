@@ -5,9 +5,7 @@ import MealsPage from "./pages/MealsPage";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <MealsPage />
-      </header>
+      <MealsPage />
     </div>
   );
 }
