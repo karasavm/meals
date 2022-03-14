@@ -39,8 +39,28 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## Improvements
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+###
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Improve performance using caching that supported from react-query.
+2. Optimize components. (memo)
+3. Better layout, more responsive.
+4. Handle recipe image loading delay.
+5. Remove styles prop noise. Move styles prop from components to classes or styled component way.
+6. More tests.
+
+### If it was a large App
+
+1. Structure with Header, Menu, Content.
+2. Maybe Authenticated and UnAuthenticated components.
+3. Generic Error handling with error pages and/or error components.
+4. Different directory structure
+5. react-use or any other library providing custom hooks utilities.
+
+### Libraries
+
+1. react-query. Help full for rest apis and server state management. Ability to cache recipes!!
+2. Chakra-UI. In order to see how I adapt to new libraries.
+3. axios. Out of the box error handling compared to fetch api and much more especially for large apps.
+4. testing-library. Better ui testing compared to enzyme. Less implementation detail approach.
